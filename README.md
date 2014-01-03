@@ -7,10 +7,14 @@ To boot dev enviorment:
 
 bower install; npm install; grunt server  (in bash). You'll need to have bower and npm installed.
 
-Stack:
-
+Stack
+--------------------------
 Yoman: scaffolding
+
 grunt: dev env. optimization (live reload mostly)
+
 bootstrap
+
 Angular 1.0.8
+
 connect.js: simple static file server.
