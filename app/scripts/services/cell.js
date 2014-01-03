@@ -27,6 +27,10 @@ angular.module('betterMinesweeperApp')
       };
       this.reveal = function(){
         revealed = true;
+        marked = false;
+      };
+      this.isMine = function(){
+        return value === -1;
       };
     };
   });

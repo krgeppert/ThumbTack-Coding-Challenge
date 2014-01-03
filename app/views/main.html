@@ -3,14 +3,15 @@
 </div>
 
 <div class="jumbotron">
-	<a ng-click="startGame()" class="btn btn-large btn-success" ng-show="!gameOn">Play!</a>
-	<div class="board">
-		<span class="header">Mines: {{board.mines}}</span>
+	<a ng-click="startGame()" class="btn btn-large btn-success" ng-show="!gameGoing">Play!</a>
+	<div class="board" ng-show="gameGoing">
+		<div> Mines Left: {{mines - guesses}}</div>
 		<table>
 			<tr ng-repeat="row in board">
-				<td ng-repeat="cell in row">{{cell.getValue()}}</td>
+				<td ng-repeat="cell in row" class="cell" ng-class="{'revealed':cell.isRevealed()}" ng-click="action($parent.$index, $index)">{{cell | cell}}</td>
 			</tr>
 		</table>
+		<div>Press shift/click to mark a mine.</div>
 	</div>
 </div>
 
