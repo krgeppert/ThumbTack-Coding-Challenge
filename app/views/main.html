@@ -2,11 +2,11 @@
 	<h3 class="text-muted">mineSweeper</h3>
 </div>
 
+<a ng-click="startGame()" class="btn btn-large btn-success" ng-show="stopped">
+	<span ng-show="!gameOver">Play!</span>
+	<span ng-show="gameOver">Restart</span>
+</a>
 <div class="jumbotron">
-	<a ng-click="startGame()" class="btn btn-large btn-success" ng-show="stopped">
-		<span ng-show="!gameOver">Play!</span>
-		<span ng-show="gameOver">Restart</span>
-	</a>
 	<div class="board" ng-show="!stopped || gameOver">
 		<div> Mines Left: {{mines - guesses}}</div>
 		<table>

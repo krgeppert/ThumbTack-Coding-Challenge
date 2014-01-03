@@ -18,6 +18,7 @@ angular.module('betterMinesweeperApp')
     });
     var board;
     $scope.startGame = function(){
+      $scope.guesses = 0;
       $scope.gameOver = false;
       $scope.stopped = false;
       board = new Board(8,8,$scope.mines);
@@ -25,7 +26,6 @@ angular.module('betterMinesweeperApp')
     };
     $scope.endGame = function(){
       revealAll();
-      alert('you lose');
       $scope.stopped = true;
       $scope.gameOver = true;
     };
@@ -39,6 +39,7 @@ angular.module('betterMinesweeperApp')
         }
       } else {
         if ($scope.board[i][j].getValue() === -1){
+          alert('you lose');
           $scope.endGame();
         } else if ($scope.board[i][j].getValue() === 0){
           recursiveOpen([i,j]);
@@ -57,7 +58,8 @@ angular.module('betterMinesweeperApp')
       win && winGame();
     }
     function winGame(){
-      alert('you win!');
+      endGame();
+      alert('you win');
     };
     function revealAll(){
       _.each($scope.board, function(row){
