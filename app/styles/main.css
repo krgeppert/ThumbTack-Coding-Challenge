@@ -95,6 +95,6 @@ body {
 .revealed {
   box-shadow: inset 1px 1px 1px #888888 !important; 
 }
-td {
+tr {
   line-height: 25px; 
 }

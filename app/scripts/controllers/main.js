@@ -4,7 +4,7 @@ angular.module('betterMinesweeperApp')
   .controller('MainCtrl', function ($scope, Board) {
     $scope.guesses = 0;
     $scope.mines = 10;
-    $scope.stopped = false;
+    $scope.stopped = true;
     var auxPress = false;
     $('html').on('keydown', function(e){
       if (e.keyCode === 16){
@@ -16,11 +16,10 @@ angular.module('betterMinesweeperApp')
         auxPress = false;
       }
     });
-    $scope.gameOn = false;
     var board;
     $scope.startGame = function(){
+      $scope.gameOver = false;
       $scope.stopped = false;
-      $scope.gameGoing = true;
       board = new Board(8,8,$scope.mines);
       $scope.board = board.mineField;
     };
@@ -28,9 +27,10 @@ angular.module('betterMinesweeperApp')
       revealAll();
       alert('you lose');
       $scope.stopped = true;
+      $scope.gameOver = true;
     };
     $scope.action = function(i,j){
-      if ($scope.stopped || !$scope.gameGoing) return false;
+      if ($scope.stopped) return false;
       if (auxPress){
         if (!$scope.board[i][j].isRevealed()){
           $scope.board[i][j].toggleMark();
